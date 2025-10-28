@@ -18,7 +18,7 @@ function App() {
         <Container maxWidth="xl" center>
           <Stack direction="row" align="center" justify="center" spacing="fluid-4" marginBottom="scale-2">
             <img src="/logo.svg" alt="Wren Logo" style={{ width: '64px', height: '64px' }} />
-            <Text as="h1" size="text-5xl" weight="bold">
+            <Text as="h1" size="text-5xl" weight="bold" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
               Wren
             </Text>
           </Stack>
