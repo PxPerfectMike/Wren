@@ -16,10 +16,13 @@ function App() {
         style={{ color: 'white' }}
       >
         <Container maxWidth="xl" center>
-          <Text as="h1" size="text-5xl" weight="bold" marginBottom="scale-2">
-            Wren
-          </Text>
-          <Text size="text-xl" style={{ opacity: 0.9 }}>
+          <Stack direction="row" align="center" justify="center" spacing="fluid-4" marginBottom="scale-2">
+            <img src="/logo.svg" alt="Wren Logo" style={{ width: '64px', height: '64px' }} />
+            <Text as="h1" size="text-5xl" weight="bold">
+              Wren
+            </Text>
+          </Stack>
+          <Text size="text-xl" style={{ opacity: 0.9 }} align="center">
             React components with container queries and fluid scales. No breakpoints.
           </Text>
         </Container>
