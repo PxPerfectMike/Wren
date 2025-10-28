@@ -8,34 +8,26 @@
 }
 
 /* Hide below specified container width */
-.wren-hidden-below {
-  display: block;
-}
-
-@container (max-width: var(--hidden-below, 0px)) {
-  .wren-hidden-below {
+@container (max-width: var(--wren-hide-below, 0px)) {
+  .wren-hide-below {
     display: none;
   }
 }
 
 /* Hide above specified container width */
-.wren-hidden-above {
-  display: block;
-}
-
-@container (min-width: var(--hidden-above, 999999px)) {
-  .wren-hidden-above {
+@container (min-width: var(--wren-hide-above, 999999px)) {
+  .wren-hide-above {
     display: none;
   }
 }
 
 /* When both below and above are specified, hide outside the range */
-.wren-hidden-below.wren-hidden-above {
+.wren-hide-below.wren-hide-above {
   display: none;
 }
 
-@container (min-width: var(--hidden-below, 0px)) and (max-width: var(--hidden-above, 999999px)) {
-  .wren-hidden-below.wren-hidden-above {
+@container (min-width: var(--wren-hide-below, 0px)) and (max-width: var(--wren-hide-above, 999999px)) {
+  .wren-hide-below.wren-hide-above {
     display: block;
   }
 }
