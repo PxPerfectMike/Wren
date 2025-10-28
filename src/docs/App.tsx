@@ -1,5 +1,6 @@
 import { Container, Box, Stack, Text } from '@lib/index';
 import { IntroSection } from './sections/IntroSection';
+import { KillerDemoSection } from './sections/KillerDemoSection';
 import { ScalePreview } from './sections/ScalePreview';
 import { BoxExamples } from './sections/BoxExamples';
 import { StackExamples } from './sections/StackExamples';
@@ -42,6 +43,7 @@ function App() {
       <Container maxWidth="xl" center>
         <Stack direction="column" spacing="fluid-8" padding="fluid-6">
           <IntroSection />
+          <KillerDemoSection />
           <ScalePreview />
           <BoxExamples />
           <StackExamples />
