@@ -103,23 +103,22 @@ export function PositioningExamples() {
           Create sticky headers or sidebars that stick during scroll.
         </Text>
         <Box className="example-container" style={{ maxHeight: '300px', overflowY: 'auto' }}>
-          <Box>
-            <Box
-              position="sticky"
-              top={0}
-              padding="fluid-4"
-              background="linear-gradient(135deg, #667eea 0%, #764ba2 100%)"
-              style={{ color: 'white', fontWeight: 'bold', zIndex: 10 }}
-            >
-              Sticky Header (scroll to see it stick!)
-            </Box>
-            <Box padding="fluid-4">
-              {Array.from({ length: 20 }).map((_, i) => (
-                <Box key={i} padding="scale-3" marginBottom="scale-2" className="demo-section">
-                  Content item {i + 1}
-                </Box>
-              ))}
-            </Box>
+          <Box
+            position="sticky"
+            top={0}
+            padding="fluid-4"
+            background="linear-gradient(135deg, #667eea 0%, #764ba2 100%)"
+            zIndex={10}
+            style={{ color: 'white', fontWeight: 'bold' }}
+          >
+            Sticky Header (scroll to see it stick!)
+          </Box>
+          <Box padding="fluid-4">
+            {Array.from({ length: 20 }).map((_, i) => (
+              <Box key={i} padding="scale-3" marginBottom="scale-2" className="demo-section">
+                Content item {i + 1}
+              </Box>
+            ))}
           </Box>
         </Box>
         <Box className="code-block">
