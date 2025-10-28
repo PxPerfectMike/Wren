@@ -168,31 +168,58 @@ export function KillerDemoSection() {
           Left cards are in a narrow sidebar (1/4 width), right cards are in wide main content (3/4 width).
           Traditional CSS would require viewport queries that apply globally - impossible to have different layouts at the same viewport size.
         </Text>
-        <Container>
-          <Stack direction="row" spacing="fluid-4" align="stretch">
-            {/* Narrow sidebar */}
-            <Box flex={1} style={{ minWidth: '200px' }}>
-              <Stack direction="column" spacing="fluid-3">
-                <Text weight="semibold" size="text-sm" style={{ textTransform: 'uppercase', color: 'var(--color-text-secondary)' }}>
-                  Sidebar (1/4 width)
-                </Text>
-                <AdaptiveCard />
-                <AdaptiveCard />
-              </Stack>
-            </Box>
 
-            {/* Wide main area */}
-            <Box flex={3}>
-              <Stack direction="column" spacing="fluid-3">
-                <Text weight="semibold" size="text-sm" style={{ textTransform: 'uppercase', color: 'var(--color-text-secondary)' }}>
-                  Main Content (3/4 width)
-                </Text>
-                <AdaptiveCard />
-                <AdaptiveCard />
-              </Stack>
-            </Box>
-          </Stack>
-        </Container>
+        {/* Show message on narrow viewports */}
+        <Hidden above={600}>
+          <Box
+            className="demo-card"
+            padding="fluid-5"
+            style={{
+              background: '#fef3c7',
+              borderLeft: '4px solid #f59e0b',
+              textAlign: 'center'
+            }}
+          >
+            <Stack direction="column" spacing="fluid-2" align="center">
+              <Text size="text-lg" weight="semibold" style={{ color: '#92400e' }}>
+                📱 View on a wider screen
+              </Text>
+              <Text style={{ color: '#78350f' }}>
+                This demo shows side-by-side layouts and is best viewed on screens 600px+ wide.
+                Try viewing on desktop or tablet to see the full effect!
+              </Text>
+            </Stack>
+          </Box>
+        </Hidden>
+
+        {/* Show demo on wider viewports */}
+        <Hidden below={600}>
+          <Container>
+            <Stack direction="row" spacing="fluid-4" align="stretch">
+              {/* Narrow sidebar */}
+              <Box flex={1} style={{ minWidth: '200px' }}>
+                <Stack direction="column" spacing="fluid-3">
+                  <Text weight="semibold" size="text-sm" style={{ textTransform: 'uppercase', color: 'var(--color-text-secondary)' }}>
+                    Sidebar (1/4 width)
+                  </Text>
+                  <AdaptiveCard />
+                  <AdaptiveCard />
+                </Stack>
+              </Box>
+
+              {/* Wide main area */}
+              <Box flex={3}>
+                <Stack direction="column" spacing="fluid-3">
+                  <Text weight="semibold" size="text-sm" style={{ textTransform: 'uppercase', color: 'var(--color-text-secondary)' }}>
+                    Main Content (3/4 width)
+                  </Text>
+                  <AdaptiveCard />
+                  <AdaptiveCard />
+                </Stack>
+              </Box>
+            </Stack>
+          </Container>
+        </Hidden>
         <Box className="code-block">
           <pre style={{ fontSize: '0.8rem' }}><code>{`<Stack direction="responsive" spacing="fluid-4">
   <Box flex={1}>
