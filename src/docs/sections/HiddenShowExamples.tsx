@@ -23,12 +23,12 @@ export function HiddenShowExamples() {
         </Text>
         <Box className="example-container">
           <Container>
-            <Stack direction="responsive" spacing="fluid-4" align="stretch">
-              <Box flex={1} className="demo-section" padding="fluid-4">
+            <Stack direction="row" spacing="fluid-4" align="stretch" wrap={true}>
+              <Box flex={1} className="demo-section" padding="fluid-4" style={{ minWidth: '200px' }}>
                 Always visible
               </Box>
               <Hidden below={768}>
-                <Box flex={1} className="demo-section" padding="fluid-4" background="#d1fae5" style={{ border: '2px dashed #047857' }}>
+                <Box flex={1} className="demo-section" padding="fluid-4" background="#d1fae5" style={{ border: '2px dashed #047857', minWidth: '200px' }}>
                   Hidden below 768px container width
                 </Box>
               </Hidden>
