@@ -1,4 +1,4 @@
-import { forwardRef, ReactNode } from 'react';
+import { forwardRef, ReactNode, useId, useEffect, useRef } from 'react';
 import '../styles/visibility.css';
 
 export interface HiddenProps {
@@ -57,19 +57,46 @@ export interface HiddenProps {
  */
 export const Hidden = forwardRef<HTMLDivElement, HiddenProps>(
   ({ children, below, above, className, style }, ref) => {
-    const customStyle: React.CSSProperties = {
-      ...style,
-      ...(below && { '--hidden-below': `${below}px` }),
-      ...(above && { '--hidden-above': `${above}px` }),
-    } as React.CSSProperties;
+    const id = useId();
+    const styleRef = useRef<HTMLStyleElement | null>(null);
+    const safeId = id.replace(/:/g, '-');
 
-    let classNames = 'wren-hidden';
-    if (below) classNames += ' wren-hidden-below';
-    if (above) classNames += ' wren-hidden-above';
-    if (className) classNames += ` ${className}`;
+    useEffect(() => {
+      // Create dynamic style tag for this specific Hidden instance
+      if (!below && !above) return;
+
+      const styleEl = document.createElement('style');
+      let css = '';
+
+      if (below && !above) {
+        // Hide when container is narrower than 'below' value
+        css = `@container (max-width: ${below - 1}px) { .wren-hidden-${safeId} { display: none !important; } }`;
+      } else if (above && !below) {
+        // Hide when container is wider than 'above' value
+        css = `@container (min-width: ${above + 1}px) { .wren-hidden-${safeId} { display: none !important; } }`;
+      } else if (below && above) {
+        // Hide when outside the range [below, above]
+        css = `
+          @container (max-width: ${below - 1}px) { .wren-hidden-${safeId} { display: none !important; } }
+          @container (min-width: ${above + 1}px) { .wren-hidden-${safeId} { display: none !important; } }
+        `;
+      }
+
+      styleEl.textContent = css;
+      document.head.appendChild(styleEl);
+      styleRef.current = styleEl;
+
+      return () => {
+        if (styleRef.current) {
+          document.head.removeChild(styleRef.current);
+        }
+      };
+    }, [below, above, safeId]);
+
+    const classes = `wren-hidden-${safeId}${className ? ` ${className}` : ''}`;
 
     return (
-      <div ref={ref} className={classNames} style={customStyle}>
+      <div ref={ref} className={classes} style={style} aria-hidden="true">
         {children}
       </div>
     );
