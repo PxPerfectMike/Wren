@@ -7,6 +7,7 @@ export { Text } from './components/Text';
 export { Spacer } from './components/Spacer';
 export { AspectRatio } from './components/AspectRatio';
 export { Hidden, Show } from './components/Hidden';
+export { WrenProvider, useWren } from './components/WrenProvider';
 
 export type { ContainerProps } from './components/Container';
 export type { BoxProps } from './components/Box';
@@ -16,5 +17,7 @@ export type { TextProps } from './components/Text';
 export type { SpacerProps } from './components/Spacer';
 export type { AspectRatioProps } from './components/AspectRatio';
 export type { HiddenProps, ShowProps } from './components/Hidden';
+export type { WrenProviderProps, WrenConfig, CustomScales } from './components/WrenProvider';
 
 export type { FluidScale, SpacingScale, TypographyScale } from './core/types';
+export type { ScaleConfig } from './core/scales';

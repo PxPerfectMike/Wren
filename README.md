@@ -41,7 +41,7 @@ npm run build
 ## Basic Usage
 
 ```tsx
-import { Container, Box, Stack, Grid, Text, Spacer, AspectRatio, Hidden, Show } from '@wren/ui';
+import { Container, Box, Stack, Grid, Text } from '@wren/ui';
 
 function App() {
   return (
@@ -67,6 +67,51 @@ function App() {
   );
 }
 ```
+
+## Customizing Scales
+
+Wren provides sensible defaults, but every design system is different. Use `WrenProvider` to customize scales for your brand:
+
+```tsx
+import { WrenProvider, Container, Box } from '@wren/ui';
+
+function App() {
+  return (
+    <WrenProvider
+      config={{
+        scales: {
+          // Override existing scales
+          'fluid-4': { min: 1.25, max: 1.75 },
+
+          // Add intermediate values
+          'fluid-4.5': { min: 1.75, max: 2.25 },
+
+          // Brand-specific scales
+          'brand-hero': { min: 3, max: 8 },
+          'brand-compact': { min: 0.5, max: 0.625 },
+        },
+        scaleConfig: {
+          minViewport: 375,   // Mobile-first
+          maxViewport: 1440,  // Design comp max
+          unit: 'cqi'         // or 'vw'
+        }
+      }}
+    >
+      <Container>
+        <Box padding="brand-hero">
+          Custom scale!
+        </Box>
+      </Container>
+    </WrenProvider>
+  );
+}
+```
+
+**Benefits:**
+- 🎨 **Match existing design systems** - Override defaults to match Figma tokens or design language
+- 🔧 **Add intermediate values** - Fill gaps in the default progression
+- 🏢 **Enterprise-ready** - Custom scales enable gradual migration and team adoption
+- ⚛️ **Runtime theming** - Change scales dynamically for theme switching
 
 ## Components
 
