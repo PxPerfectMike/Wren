@@ -165,15 +165,16 @@ export function KillerDemoSection() {
         </Text>
         <Text color="var(--color-text-secondary)">
           Same component in different sized containers <strong>on the same page</strong>.
-          Traditional CSS would require viewport queries that apply globally.
+          Left cards are in a narrow sidebar (1/4 width), right cards are in wide main content (3/4 width).
+          Traditional CSS would require viewport queries that apply globally - impossible to have different layouts at the same viewport size.
         </Text>
         <Container>
-          <Stack direction="responsive" spacing="fluid-4">
+          <Stack direction="row" spacing="fluid-4" align="stretch">
             {/* Narrow sidebar */}
             <Box flex={1} style={{ minWidth: '200px' }}>
               <Stack direction="column" spacing="fluid-3">
                 <Text weight="semibold" size="text-sm" style={{ textTransform: 'uppercase', color: 'var(--color-text-secondary)' }}>
-                  Sidebar
+                  Sidebar (1/4 width)
                 </Text>
                 <AdaptiveCard />
                 <AdaptiveCard />
@@ -184,7 +185,7 @@ export function KillerDemoSection() {
             <Box flex={3}>
               <Stack direction="column" spacing="fluid-3">
                 <Text weight="semibold" size="text-sm" style={{ textTransform: 'uppercase', color: 'var(--color-text-secondary)' }}>
-                  Main Content
+                  Main Content (3/4 width)
                 </Text>
                 <AdaptiveCard />
                 <AdaptiveCard />
