@@ -128,13 +128,17 @@ export interface ShowProps extends HiddenProps {}
 export const Show = forwardRef<HTMLDivElement, ShowProps>(
   ({ children, below, above, className, style }, ref) => {
     // Show is the inverse of Hidden
-    // Show below={X} = show only below X = hide above X
-    // Show above={X} = show only above X = hide below X
+    // Show below={X} = show when < X = hide when >= X
+    // Show above={X} = show when > X = hide when <= X
+    //
+    // Boundary adjustment needed:
+    // - Show below={600} = hide when >= 600 = Hidden above={599}
+    // - Show above={600} = hide when <= 600 = Hidden below={601}
     return (
       <Hidden
         ref={ref}
-        below={above}  // Show above={X} → Hidden below={X}
-        above={below}  // Show below={X} → Hidden above={X}
+        below={above !== undefined ? above + 1 : undefined}  // Show above={X} → Hidden below={X+1}
+        above={below !== undefined ? below - 1 : undefined}  // Show below={X} → Hidden above={X-1}
         className={className}
         style={style}
       >
