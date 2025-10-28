@@ -151,14 +151,61 @@ export function PositioningExamples() {
         </Text>
         <Text color="var(--color-text-secondary)">
           Fixed elements stay in place relative to the viewport. Use zIndex to control stacking order.
+          (Demo uses absolute positioning to simulate fixed behavior within the container)
         </Text>
         <Box className="example-container">
-          <Box position="relative" padding="fluid-5" style={{ minHeight: '150px' }}>
-            <Text marginBottom="scale-3">
-              Fixed positioning is great for floating action buttons, notifications, or global overlays.
-            </Text>
-            <Box className="demo-section" padding="fluid-3">
-              Normal content
+          <Box position="relative" padding="fluid-5" style={{ minHeight: '300px', overflow: 'hidden' }}>
+            {/* Simulated notification banner (top-center) */}
+            <Box
+              position="absolute"
+              top={10}
+              left="50%"
+              zIndex={9999}
+              padding="scale-3"
+              background="#fbbf24"
+              borderRadius="8px"
+              style={{
+                transform: 'translateX(-50%)',
+                boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)',
+                fontWeight: 'semibold',
+                fontSize: '0.875rem'
+              }}
+            >
+              🔔 Notification (top-center, z-index: 9999)
+            </Box>
+
+            {/* Content area */}
+            <Box marginTop="scale-8" marginBottom="scale-4" className="demo-section" padding="fluid-4">
+              <Text weight="semibold" marginBottom="scale-2">Scrollable Content</Text>
+              <Text size="text-sm">
+                In a real app, fixed elements stay in the same position even when the page scrolls.
+                Great for notifications, FABs, and navigation.
+              </Text>
+            </Box>
+
+            {/* Simulated floating action button (bottom-right) */}
+            <Box
+              position="absolute"
+              bottom={20}
+              right={20}
+              zIndex={1000}
+              padding="scale-4"
+              background="#8b5cf6"
+              borderRadius="50%"
+              style={{
+                color: 'white',
+                cursor: 'pointer',
+                fontWeight: 'bold',
+                fontSize: '1.5rem',
+                width: '56px',
+                height: '56px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                boxShadow: '0 4px 12px rgba(139, 92, 246, 0.4)'
+              }}
+            >
+              +
             </Box>
           </Box>
         </Box>
@@ -169,10 +216,16 @@ export function PositioningExamples() {
   bottom={20}
   right={20}
   zIndex={1000}
-  padding="fluid-4"
+  padding="scale-4"
   background="#8b5cf6"
   borderRadius="50%"
-  style={{ color: 'white', cursor: 'pointer' }}
+  style={{
+    width: '56px',
+    height: '56px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center'
+  }}
 >
   +
 </Box>
@@ -185,7 +238,7 @@ export function PositioningExamples() {
   zIndex={9999}
   style={{ transform: 'translateX(-50%)' }}
 >
-  <Toast />
+  Notification
 </Box>`}</code></pre>
         </Box>
       </Stack>
