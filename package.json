@@ -1,0 +1,54 @@
+{
+  "name": "fluid-layout-system",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "A responsive design system that eliminates breakpoints using container queries and fluid scales",
+  "main": "./dist/fluid-layout-system.umd.js",
+  "module": "./dist/fluid-layout-system.es.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/fluid-layout-system.es.js",
+      "require": "./dist/fluid-layout-system.umd.js"
+    },
+    "./styles": "./dist/style.css"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "build:lib": "tsc && vite build --mode lib",
+    "preview": "vite preview",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@typescript-eslint/eslint-plugin": "^8.15.0",
+    "@typescript-eslint/parser": "^8.15.0",
+    "@vitejs/plugin-react": "^4.3.4",
+    "eslint": "^9.15.0",
+    "eslint-plugin-react-hooks": "^5.0.0",
+    "eslint-plugin-react-refresh": "^0.4.14",
+    "typescript": "^5.6.3",
+    "vite": "^6.0.1",
+    "vite-plugin-dts": "^4.3.0"
+  },
+  "keywords": [
+    "react",
+    "responsive",
+    "layout",
+    "design-system",
+    "container-queries",
+    "fluid-design"
+  ],
+  "author": "",
+  "license": "MIT"
+}

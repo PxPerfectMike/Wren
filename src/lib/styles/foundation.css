@@ -1,0 +1,202 @@
+/**
+ * Fluid Layout System - CSS Foundation
+ *
+ * This file establishes:
+ * - CSS Custom Properties for scales
+ * - Container query setup
+ * - Base reset and normalizations
+ */
+
+:root {
+  /* Fluid Spacing Scale */
+  --fluid-1: clamp(0.25rem, 0.1563rem + 0.4688vw, 0.5rem);
+  --fluid-2: clamp(0.5rem, 0.4063rem + 0.4688vw, 0.75rem);
+  --fluid-3: clamp(0.75rem, 0.6563rem + 0.4688vw, 1rem);
+  --fluid-4: clamp(1rem, 0.8125rem + 0.9375vw, 1.5rem);
+  --fluid-5: clamp(1.5rem, 1.3125rem + 0.9375vw, 2rem);
+  --fluid-6: clamp(2rem, 1.625rem + 1.875vw, 3rem);
+  --fluid-7: clamp(3rem, 2.625rem + 1.875vw, 4rem);
+  --fluid-8: clamp(4rem, 3.25rem + 3.75vw, 6rem);
+  --fluid-9: clamp(6rem, 5.25rem + 3.75vw, 8rem);
+  --fluid-10: clamp(8rem, 6.5rem + 7.5vw, 12rem);
+
+  /* Fixed Spacing Scale */
+  --scale-1: 0.25rem;
+  --scale-2: 0.5rem;
+  --scale-3: 0.75rem;
+  --scale-4: 1rem;
+  --scale-5: 1.5rem;
+  --scale-6: 2rem;
+  --scale-7: 3rem;
+  --scale-8: 4rem;
+  --scale-9: 6rem;
+  --scale-10: 8rem;
+
+  /* Typography Scale */
+  --text-xs: clamp(0.75rem, 0.7031rem + 0.2344vw, 0.875rem);
+  --text-sm: clamp(0.875rem, 0.8281rem + 0.2344vw, 1rem);
+  --text-base: clamp(1rem, 0.9531rem + 0.2344vw, 1.125rem);
+  --text-lg: clamp(1.125rem, 1.0781rem + 0.2344vw, 1.25rem);
+  --text-xl: clamp(1.25rem, 1.1094rem + 0.7031vw, 1.5rem);
+  --text-2xl: clamp(1.5rem, 1.3125rem + 0.9375vw, 2rem);
+  --text-3xl: clamp(2rem, 1.8125rem + 0.9375vw, 2.5rem);
+  --text-4xl: clamp(2.5rem, 2.125rem + 1.875vw, 3.5rem);
+  --text-5xl: clamp(3.5rem, 2.9375rem + 2.8125vw, 5rem);
+
+  /* Container query breakpoints */
+  --container-xs: 320px;
+  --container-sm: 480px;
+  --container-md: 768px;
+  --container-lg: 1024px;
+  --container-xl: 1280px;
+  --container-2xl: 1536px;
+}
+
+/* Box sizing reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Prevent horizontal overflow on all elements */
+* {
+  min-width: 0;
+  min-height: 0;
+}
+
+/* Remove default margins */
+body,
+h1, h2, h3, h4, h5, h6,
+p, figure, blockquote, dl, dd {
+  margin: 0;
+}
+
+/* Base layout styles */
+.fl-container {
+  container-type: inline-size;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.fl-box {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.fl-stack {
+  display: flex;
+  gap: var(--stack-gap, var(--fluid-4));
+  min-width: 0;
+}
+
+.fl-stack > * {
+  min-width: 0;
+}
+
+.fl-stack[data-direction="row"] {
+  flex-direction: row;
+}
+
+.fl-stack[data-direction="column"] {
+  flex-direction: column;
+}
+
+/* Responsive direction - switches at md breakpoint (768px) */
+.fl-stack[data-direction="responsive"] {
+  flex-direction: column;
+}
+
+@container (min-width: 768px) {
+  .fl-stack[data-direction="responsive"] {
+    flex-direction: row;
+  }
+}
+
+.fl-grid {
+  display: grid;
+  gap: var(--grid-gap, var(--fluid-4));
+  min-width: 0;
+  max-width: 100%;
+}
+
+.fl-grid > * {
+  min-width: 0;
+}
+
+/* Auto-fit grid - cards automatically wrap based on min-size */
+.fl-grid[data-columns="auto-fit"] {
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(min(var(--grid-min-size, 250px), 100%), 1fr)
+  );
+}
+
+/* Auto-fill grid - always fills row even if items don't wrap */
+.fl-grid[data-columns="auto-fill"] {
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(min(var(--grid-min-size, 250px), 100%), 1fr)
+  );
+}
+
+/* Fixed column counts with responsive fallbacks */
+.fl-grid[data-columns="1"] {
+  grid-template-columns: 1fr;
+}
+
+.fl-grid[data-columns="2"] {
+  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+}
+
+@container (min-width: 640px) {
+  .fl-grid[data-columns="2"] {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.fl-grid[data-columns="3"] {
+  grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
+}
+
+@container (min-width: 960px) {
+  .fl-grid[data-columns="3"] {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.fl-grid[data-columns="4"] {
+  grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr));
+}
+
+@container (min-width: 1024px) {
+  .fl-grid[data-columns="4"] {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.fl-text {
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Utility classes for quick prototyping */
+.fluid-p-1 { padding: var(--fluid-1); }
+.fluid-p-2 { padding: var(--fluid-2); }
+.fluid-p-3 { padding: var(--fluid-3); }
+.fluid-p-4 { padding: var(--fluid-4); }
+.fluid-p-5 { padding: var(--fluid-5); }
+
+.fluid-m-1 { margin: var(--fluid-1); }
+.fluid-m-2 { margin: var(--fluid-2); }
+.fluid-m-3 { margin: var(--fluid-3); }
+.fluid-m-4 { margin: var(--fluid-4); }
+.fluid-m-5 { margin: var(--fluid-5); }
+
+.fluid-gap-1 { gap: var(--fluid-1); }
+.fluid-gap-2 { gap: var(--fluid-2); }
+.fluid-gap-3 { gap: var(--fluid-3); }
+.fluid-gap-4 { gap: var(--fluid-4); }
+.fluid-gap-5 { gap: var(--fluid-5); }
