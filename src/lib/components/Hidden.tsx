@@ -15,6 +15,14 @@ export interface HiddenProps {
   above?: number;
 
   /**
+   * Whether to remove from accessibility tree (use with caution)
+   * When true, uses display: none (completely removes from DOM/a11y tree)
+   * When false, uses visibility: hidden (preserves layout space, hidden from a11y)
+   * @default true
+   */
+  removeFromDOM?: boolean;
+
+  /**
    * Children to conditionally hide
    */
   children: ReactNode;
@@ -34,19 +42,26 @@ export interface HiddenProps {
  * Hidden component for responsive visibility control
  *
  * Uses container queries to show/hide content based on container size.
- * Content is hidden using CSS (display: none), so it won't take up space
- * but will still be in the DOM.
+ *
+ * **Accessibility Considerations:**
+ * - Use `removeFromDOM={true}` (default) for decorative/duplicate content
+ * - Use `removeFromDOM={false}` when content should remain in layout but hidden
+ * - For interactive content, consider if it should be accessible when "hidden"
+ *
+ * **Hiding Methods:**
+ * - `removeFromDOM={true}`: Uses display: none (removes from layout and a11y tree)
+ * - `removeFromDOM={false}`: Uses visibility: hidden (preserves layout space)
  *
  * @example
  * ```tsx
- * // Hide on small containers
+ * // Hide decorative content on small containers
  * <Hidden below={768}>
- *   <div>Only visible on large containers</div>
+ *   <div>Desktop-only decoration</div>
  * </Hidden>
  *
- * // Hide on large containers
- * <Hidden above={768}>
- *   <div>Only visible on small containers</div>
+ * // Hide but preserve layout space
+ * <Hidden below={768} removeFromDOM={false}>
+ *   <div>Hidden but takes up space</div>
  * </Hidden>
  *
  * // Hide in a specific range
@@ -56,17 +71,18 @@ export interface HiddenProps {
  * ```
  */
 export const Hidden = forwardRef<HTMLDivElement, HiddenProps>(
-  ({ children, below, above, className, style }, ref) => {
+  ({ children, below, above, removeFromDOM = true, className, style }, ref) => {
     const customStyle: React.CSSProperties = {
       ...style,
       ...(below && { '--wren-hide-below': `${below}px` } as any),
       ...(above && { '--wren-hide-above': `${above}px` } as any),
     };
 
-    const classes = `wren-hidden${below ? ' wren-hide-below' : ''}${above ? ' wren-hide-above' : ''}${className ? ` ${className}` : ''}`;
+    const hideMethod = removeFromDOM ? 'display' : 'visibility';
+    const classes = `wren-hidden wren-hidden-${hideMethod}${below ? ' wren-hide-below' : ''}${above ? ' wren-hide-above' : ''}${className ? ` ${className}` : ''}`;
 
     return (
-      <div ref={ref} className={classes} style={customStyle} aria-hidden="true">
+      <div ref={ref} className={classes} style={customStyle} aria-hidden={removeFromDOM ? 'true' : undefined}>
         {children}
       </div>
     );

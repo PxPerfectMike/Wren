@@ -1,33 +1,58 @@
 /**
  * Visibility utilities for responsive show/hide
  * Uses container queries for container-based visibility control
+ *
+ * Two hiding methods:
+ * - display: Removes from layout and accessibility tree (default)
+ * - visibility: Preserves layout space, removes from accessibility tree
  */
 
 .wren-hidden {
-  display: block;
+  /* Base state - visible */
 }
 
-/* Hide below specified container width */
+/* Display-based hiding (removes from layout) */
 @container (max-width: var(--wren-hide-below, 0px)) {
-  .wren-hide-below {
+  .wren-hidden-display.wren-hide-below {
     display: none;
   }
 }
 
-/* Hide above specified container width */
 @container (min-width: var(--wren-hide-above, 999999px)) {
-  .wren-hide-above {
+  .wren-hidden-display.wren-hide-above {
     display: none;
   }
 }
 
-/* When both below and above are specified, hide outside the range */
-.wren-hide-below.wren-hide-above {
+.wren-hidden-display.wren-hide-below.wren-hide-above {
   display: none;
 }
 
 @container (min-width: var(--wren-hide-below, 0px)) and (max-width: var(--wren-hide-above, 999999px)) {
-  .wren-hide-below.wren-hide-above {
+  .wren-hidden-display.wren-hide-below.wren-hide-above {
     display: block;
+  }
+}
+
+/* Visibility-based hiding (preserves layout space) */
+@container (max-width: var(--wren-hide-below, 0px)) {
+  .wren-hidden-visibility.wren-hide-below {
+    visibility: hidden;
+  }
+}
+
+@container (min-width: var(--wren-hide-above, 999999px)) {
+  .wren-hidden-visibility.wren-hide-above {
+    visibility: hidden;
+  }
+}
+
+.wren-hidden-visibility.wren-hide-below.wren-hide-above {
+  visibility: hidden;
+}
+
+@container (min-width: var(--wren-hide-below, 0px)) and (max-width: var(--wren-hide-above, 999999px)) {
+  .wren-hidden-visibility.wren-hide-below.wren-hide-above {
+    visibility: visible;
   }
 }
