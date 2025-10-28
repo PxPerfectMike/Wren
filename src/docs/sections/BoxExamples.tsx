@@ -20,13 +20,13 @@ export function BoxExamples() {
           Use <code>flex</code> props to create layouts with proportional sizing (like React Native).
         </Text>
         <Box className="example-container">
-          <Stack direction="responsive" spacing="fluid-4">
+          <Stack direction="row" spacing="fluid-4" align="stretch">
             <Box
               flex={1}
               padding="fluid-5"
               background="var(--color-primary)"
               borderRadius="8px"
-              style={{ color: 'white', textAlign: 'center' }}
+              style={{ color: 'white', textAlign: 'center', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}
             >
               <Text weight="semibold">flex={'{1}'}</Text>
               <Text size="text-sm">Sidebar (25%)</Text>
@@ -36,7 +36,7 @@ export function BoxExamples() {
               padding="fluid-5"
               background="var(--color-secondary)"
               borderRadius="8px"
-              style={{ color: 'white', textAlign: 'center' }}
+              style={{ color: 'white', textAlign: 'center', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}
             >
               <Text weight="semibold">flex={'{3}'}</Text>
               <Text size="text-sm">Main Content (75%)</Text>
