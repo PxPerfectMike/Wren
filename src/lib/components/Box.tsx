@@ -58,6 +58,7 @@ export const Box = forwardRef<HTMLDivElement, BoxProps>(
     margin, marginX, marginY, marginTop, marginBottom, marginLeft, marginRight,
     flex, flexGrow, flexShrink, flexBasis, alignSelf,
     width, height, minWidth, maxWidth, minHeight, maxHeight,
+    position, top, right, bottom, left, zIndex,
   }, ref) => {
     const spacingStyles = generateSpacingStyles({
       padding, paddingX, paddingY, paddingTop, paddingBottom, paddingLeft, paddingRight,
@@ -67,6 +68,7 @@ export const Box = forwardRef<HTMLDivElement, BoxProps>(
     const layoutStyles = generateLayoutStyles({
       flex, flexGrow, flexShrink, flexBasis, alignSelf,
       width, height, minWidth, maxWidth, minHeight, maxHeight,
+      position, top, right, bottom, left, zIndex,
     });
 
     const combinedStyles = {
