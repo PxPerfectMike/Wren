@@ -10,6 +10,7 @@ import { AspectRatioExamples } from './sections/AspectRatioExamples';
 import { HiddenShowExamples } from './sections/HiddenShowExamples';
 import { PositioningExamples } from './sections/PositioningExamples';
 import { ComparisonSection } from './sections/ComparisonSection';
+import { AlternativesSection } from './sections/AlternativesSection';
 import { BrowserSupportSection } from './sections/BrowserSupportSection';
 import { PerformanceSection } from './sections/PerformanceSection';
 import { AccessibilitySection } from './sections/AccessibilitySection';
@@ -53,6 +54,7 @@ function App() {
           <HiddenShowExamples />
           <PositioningExamples />
           <ComparisonSection />
+          <AlternativesSection />
           <BrowserSupportSection />
           <PerformanceSection />
           <AccessibilitySection />
