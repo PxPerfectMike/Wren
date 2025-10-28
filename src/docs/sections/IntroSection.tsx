@@ -3,25 +3,30 @@ import { Box, Stack, Text } from '@lib/index';
 export function IntroSection() {
   return (
     <Stack direction="column" spacing="fluid-4">
-      <Text as="h2" size="text-3xl" weight="bold">
-        Why Another Layout System?
-      </Text>
+      <Stack direction="row" justify="space-between" align="center">
+        <Text as="h2" size="text-3xl" weight="bold">
+          The Problem We Got Tired Of
+        </Text>
+        <Text size="text-sm" color="var(--color-primary)" style={{ opacity: 0.8 }}>
+          👀 This section: built with Wren
+        </Text>
+      </Stack>
 
       <Text size="text-lg" color="var(--color-text-secondary)">
-        Traditional responsive design is painful. You write the same breakpoint logic over and over,
-        manage multiple screen sizes, and still end up with layouts that don't adapt smoothly.
+        Let's be honest: breakpoints suck. 😤 You write the same media query logic over and over,
+        manage multiple screen sizes, and <em>still</em> end up with layouts that jump around awkwardly.
       </Text>
 
       <Box className="demo-card">
         <Stack direction="column" spacing="fluid-3">
           <Text size="text-xl" weight="semibold">
-            The Problems
+            What drives us crazy
           </Text>
           <Stack as="ul" direction="column" spacing="fluid-2" style={{ margin: 0, paddingLeft: '1.5rem' }}>
-            <Text as="li">Too many breakpoints to manage</Text>
-            <Text as="li">Components respond to viewport, not their container</Text>
-            <Text as="li">Repetitive spacing and sizing logic everywhere</Text>
-            <Text as="li">Hard to maintain consistency across the app</Text>
+            <Text as="li">Too many breakpoints (seriously, how many do we need?)</Text>
+            <Text as="li">Components that only care about viewport size (what about context?)</Text>
+            <Text as="li">Copy-pasting the same spacing logic everywhere</Text>
+            <Text as="li">Trying to keep everything consistent (spoiler: you can't)</Text>
           </Stack>
         </Stack>
       </Box>
@@ -29,20 +34,20 @@ export function IntroSection() {
       <Box className="demo-card" background="linear-gradient(135deg, #667eea15 0%, #764ba215 100%)">
         <Stack direction="column" spacing="fluid-3">
           <Text size="text-xl" weight="semibold" color="var(--color-primary)">
-            The Solution
+            How Wren fixes it
           </Text>
           <Stack as="ul" direction="column" spacing="fluid-2" style={{ margin: 0, paddingLeft: '1.5rem' }}>
             <Text as="li">
-              <strong>Container Queries:</strong> Components adapt to their container, not viewport
+              <strong>Container Queries:</strong> Your components finally know where they are
             </Text>
             <Text as="li">
-              <strong>Fluid Scales:</strong> Spacing and typography scale smoothly using CSS clamp()
+              <strong>Fluid Scales:</strong> Everything scales smoothly (no more jumpy transitions!)
             </Text>
             <Text as="li">
-              <strong>Declarative API:</strong> React Native-style props that are intuitive and type-safe
+              <strong>Declarative API:</strong> If you've used React Native, you already know this
             </Text>
             <Text as="li">
-              <strong>Zero Breakpoints:</strong> Most layouts work perfectly without a single media query
+              <strong>Zero Breakpoints:</strong> We're not kidding. Most layouts need exactly zero.
             </Text>
           </Stack>
         </Stack>

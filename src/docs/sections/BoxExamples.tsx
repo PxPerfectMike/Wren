@@ -3,12 +3,17 @@ import { Box, Stack, Text } from '@lib/index';
 export function BoxExamples() {
   return (
     <Stack direction="column" spacing="fluid-5">
-      <Text as="h2" size="text-3xl" weight="bold">
-        Box Component
-      </Text>
+      <Stack direction="row" justify="space-between" align="center">
+        <Text as="h2" size="text-3xl" weight="bold">
+          Box Component
+        </Text>
+        <Text size="text-sm" color="var(--color-primary)" style={{ opacity: 0.8 }}>
+          👀 Examples: built with Wren
+        </Text>
+      </Stack>
 
       <Text size="text-lg" color="var(--color-text-secondary)">
-        The fundamental layout primitive. Provides spacing, flex layout, and sizing props.
+        The fundamental building block. Think of it like a <code>div</code> that actually makes sense.
       </Text>
 
       {/* Example 1: Flex Layout */}

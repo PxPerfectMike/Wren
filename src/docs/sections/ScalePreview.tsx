@@ -25,13 +25,18 @@ export function ScalePreview() {
 
   return (
     <Stack direction="column" spacing="fluid-5">
-      <Text as="h2" size="text-3xl" weight="bold">
-        Fluid Scale System
-      </Text>
+      <Stack direction="row" justify="space-between" align="center">
+        <Text as="h2" size="text-3xl" weight="bold">
+          Fluid Scales (The Secret Sauce)
+        </Text>
+        <Text size="text-sm" color="var(--color-primary)" style={{ opacity: 0.8 }}>
+          👀 This demo: built with Wren
+        </Text>
+      </Stack>
 
       <Text size="text-lg" color="var(--color-text-secondary)">
-        All spacing and typography uses CSS clamp() to scale smoothly between minimum and maximum values.
-        Resize your browser to see the scales adapt fluidly.
+        Spacing that scales smoothly. No jumps, no breakpoints. Just <code>clamp()</code> doing its thing.
+        Try resizing your browser—watch the bars grow and shrink! 📏
       </Text>
 
       {/* Spacing Scale */}

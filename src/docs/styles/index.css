@@ -41,6 +41,12 @@ code {
   border-radius: 4px;
   font-size: 0.875em;
   word-break: break-word;
+  transition: background 0.2s ease;
+}
+
+code:hover {
+  background: var(--color-primary);
+  color: white;
 }
 
 pre {
@@ -78,14 +84,16 @@ a:hover {
   border-radius: 8px;
   padding: var(--fluid-5);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  transition: box-shadow 0.2s;
+  transition: all 0.3s ease;
   min-width: 0;
   word-wrap: break-word;
   overflow-wrap: break-word;
 }
 
 .demo-card:hover {
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+  transform: translateY(-2px);
+  border-color: var(--color-primary);
 }
 
 .demo-section {
@@ -99,6 +107,14 @@ a:hover {
   justify-content: center;
   color: var(--color-text-secondary);
   font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.demo-section:hover {
+  background: var(--color-bg);
+  border-color: var(--color-primary);
+  border-style: solid;
+  transform: scale(1.02);
 }
 
 .code-block {

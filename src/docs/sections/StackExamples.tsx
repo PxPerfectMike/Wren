@@ -3,12 +3,17 @@ import { Box, Stack, Text } from '@lib/index';
 export function StackExamples() {
   return (
     <Stack direction="column" spacing="fluid-5">
-      <Text as="h2" size="text-3xl" weight="bold">
-        Stack Component
-      </Text>
+      <Stack direction="row" justify="space-between" align="center">
+        <Text as="h2" size="text-3xl" weight="bold">
+          Stack Component
+        </Text>
+        <Text size="text-sm" color="var(--color-primary)" style={{ opacity: 0.8 }}>
+          👀 Examples: built with Wren
+        </Text>
+      </Stack>
 
       <Text size="text-lg" color="var(--color-text-secondary)">
-        Auto-layout stacking with consistent spacing. Perfect for vertical or horizontal layouts.
+        Auto-layout magic. Items just line up how you expect them to. No flexbox headaches.
       </Text>
 
       {/* Example 1: Responsive Direction */}

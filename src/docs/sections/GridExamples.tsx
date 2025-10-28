@@ -3,12 +3,17 @@ import { Box, Stack, Text, Grid } from '@lib/index';
 export function GridExamples() {
   return (
     <Stack direction="column" spacing="fluid-5">
-      <Text as="h2" size="text-3xl" weight="bold">
-        Grid Component
-      </Text>
+      <Stack direction="row" justify="space-between" align="center">
+        <Text as="h2" size="text-3xl" weight="bold">
+          Grid Component
+        </Text>
+        <Text size="text-sm" color="var(--color-primary)" style={{ opacity: 0.8 }}>
+          👀 Examples: built with Wren
+        </Text>
+      </Stack>
 
       <Text size="text-lg" color="var(--color-text-secondary)">
-        Responsive grids without breakpoints. Items automatically wrap based on available space.
+        Grids that actually work. No breakpoints. Items wrap when they need to. It's kind of magical. ✨
       </Text>
 
       {/* Example 1: Auto-Fit Grid */}
