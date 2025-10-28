@@ -4,7 +4,14 @@ import { ScalePreview } from './sections/ScalePreview';
 import { BoxExamples } from './sections/BoxExamples';
 import { StackExamples } from './sections/StackExamples';
 import { GridExamples } from './sections/GridExamples';
+import { SpacerExamples } from './sections/SpacerExamples';
+import { AspectRatioExamples } from './sections/AspectRatioExamples';
+import { HiddenShowExamples } from './sections/HiddenShowExamples';
+import { PositioningExamples } from './sections/PositioningExamples';
 import { ComparisonSection } from './sections/ComparisonSection';
+import { BrowserSupportSection } from './sections/BrowserSupportSection';
+import { PerformanceSection } from './sections/PerformanceSection';
+import { AccessibilitySection } from './sections/AccessibilitySection';
 
 function App() {
   return (
@@ -39,7 +46,14 @@ function App() {
           <BoxExamples />
           <StackExamples />
           <GridExamples />
+          <SpacerExamples />
+          <AspectRatioExamples />
+          <HiddenShowExamples />
+          <PositioningExamples />
           <ComparisonSection />
+          <BrowserSupportSection />
+          <PerformanceSection />
+          <AccessibilitySection />
 
           {/* Meta Section - Site built with Wren */}
           <Box className="demo-card" background="linear-gradient(135deg, #667eea15 0%, #764ba215 100%)" style={{ marginTop: 'var(--fluid-8)' }}>
