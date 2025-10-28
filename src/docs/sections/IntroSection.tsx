@@ -29,7 +29,7 @@ export function IntroSection() {
               <strong>Declarative API:</strong> If you've used React Native, you already know this pattern
             </Text>
             <Text as="li">
-              <strong>Zero Breakpoints:</strong> Most layouts need exactly zero media queries
+              <strong>Minimal Breakpoints:</strong> Most layouts need zero custom breakpoints, complex ones need just one
             </Text>
           </Stack>
         </Stack>

@@ -92,7 +92,7 @@ export function ComparisonSection() {
 // That's it! ✨`}</code></pre>
             </Box>
             <Text size="text-sm" color="#047857" weight="medium">
-              Benefits: Zero breakpoints, fluid scaling, container-based, declarative API
+              Benefits: Minimal breakpoints, fluid scaling, container-based, declarative API
             </Text>
           </Stack>
         </Box>
@@ -126,7 +126,7 @@ export function ComparisonSection() {
                 ⚡ Less Code
               </Text>
               <Text size="text-sm" color="var(--color-text-secondary)">
-                Write 80% less responsive code. No media queries for most use cases.
+                Dramatically less responsive code. Minimal media queries for most use cases.
               </Text>
             </Stack>
             <Stack direction="column" spacing="fluid-2">

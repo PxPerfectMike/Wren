@@ -23,7 +23,7 @@ function App() {
             </Text>
           </Stack>
           <Text size="text-xl" style={{ opacity: 0.9 }} align="center">
-            React components with container queries and fluid scales. No breakpoints.
+            React components with container queries and fluid scales. Dramatically fewer breakpoints.
           </Text>
           <Text size="text-sm" style={{ opacity: 0.7 }} align="center" marginTop="scale-2">
             (Yes, this entire site is built with Wren)
@@ -60,7 +60,7 @@ function App() {
                   <Text as="li"><code>Stack</code> and <code>Grid</code> for all layouts</Text>
                   <Text as="li"><code>Box</code> for spacing and structure</Text>
                   <Text as="li"><code>fluid-*</code> scales for all spacing</Text>
-                  <Text as="li">Zero custom breakpoints ✨</Text>
+                  <Text as="li">Minimal custom breakpoints ✨</Text>
                 </Stack>
               </Stack>
               <Text size="text-sm" color="var(--color-text-secondary)" style={{ fontStyle: 'italic' }}>
