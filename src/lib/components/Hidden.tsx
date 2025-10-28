@@ -101,11 +101,13 @@ export interface ShowProps extends HiddenProps {}
 export const Show = forwardRef<HTMLDivElement, ShowProps>(
   ({ children, below, above, className, style }, ref) => {
     // Show is the inverse of Hidden
+    // Show below={X} = show only below X = hide above X
+    // Show above={X} = show only above X = hide below X
     return (
       <Hidden
         ref={ref}
-        below={above ? undefined : below}  // Invert the logic
-        above={below ? undefined : above}  // Invert the logic
+        below={above}  // Show above={X} → Hidden below={X}
+        above={below}  // Show below={X} → Hidden above={X}
         className={className}
         style={style}
       >
