@@ -62,11 +62,11 @@ export function ComparisonSection() {
           </Stack>
         </Box>
 
-        {/* Fluid Layout System */}
+        {/* Wren */}
         <Box flex={1} className="demo-card" background="#d1fae5">
           <Stack direction="column" spacing="fluid-3">
             <Text size="text-xl" weight="semibold" color="#047857">
-              Fluid Layout System
+              Wren
             </Text>
             <Box className="code-block" style={{ background: 'white' }}>
               <pre><code>{`<Stack

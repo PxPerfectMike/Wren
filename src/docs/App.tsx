@@ -17,10 +17,10 @@ function App() {
       >
         <Container maxWidth="xl" center>
           <Text as="h1" size="text-5xl" weight="bold" marginBottom="scale-2">
-            Fluid Layout System
+            Wren
           </Text>
           <Text size="text-xl" style={{ opacity: 0.9 }}>
-            Responsive design without breakpoints. Built on container queries and fluid scales.
+            React components with container queries and fluid scales. No breakpoints.
           </Text>
         </Container>
       </Box>

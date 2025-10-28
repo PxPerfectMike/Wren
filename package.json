@@ -1,18 +1,26 @@
 {
-  "name": "fluid-layout-system",
+  "name": "@wren/ui",
   "version": "0.1.0",
   "type": "module",
-  "description": "A responsive design system that eliminates breakpoints using container queries and fluid scales",
-  "main": "./dist/fluid-layout-system.umd.js",
-  "module": "./dist/fluid-layout-system.es.js",
+  "description": "React components with container queries and fluid scales. No breakpoints.",
+  "main": "./dist/wren.umd.js",
+  "module": "./dist/wren.es.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/fluid-layout-system.es.js",
-      "require": "./dist/fluid-layout-system.umd.js"
+      "import": "./dist/wren.es.js",
+      "require": "./dist/wren.umd.js"
     },
     "./styles": "./dist/style.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/PxPerfectMike/Wren.git"
+  },
+  "homepage": "https://wrenui.com",
+  "bugs": {
+    "url": "https://github.com/PxPerfectMike/Wren/issues"
   },
   "files": [
     "dist"

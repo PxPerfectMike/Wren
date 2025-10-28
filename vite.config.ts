@@ -25,9 +25,9 @@ export default defineConfig(({ mode }) => {
       // Library build configuration
       lib: {
         entry: resolve(__dirname, 'src/lib/index.ts'),
-        name: 'FluidLayoutSystem',
+        name: 'Wren',
         formats: ['es', 'umd'],
-        fileName: (format) => `fluid-layout-system.${format}.js`,
+        fileName: (format) => `wren.${format}.js`,
       },
       rollupOptions: {
         external: ['react', 'react-dom'],

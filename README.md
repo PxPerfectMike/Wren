@@ -1,6 +1,6 @@
-# Fluid Layout System
+# Wren
 
-> Responsive design without breakpoints. Built on container queries and fluid scales.
+> React components with container queries and fluid scales. No breakpoints.
 
 ## Why?
 
@@ -10,7 +10,7 @@ Traditional responsive design is painful:
 - Repetitive spacing and sizing logic
 - Hard to maintain consistency
 
-**Fluid Layout System** solves these problems with:
+**Wren** solves these problems with:
 - ✨ **Zero breakpoints** for most layouts
 - 📦 **Container queries** - components adapt to their container, not viewport
 - 📏 **Fluid scales** - spacing and typography scale smoothly using CSS clamp()
@@ -40,7 +40,7 @@ npm run build
 ## Basic Usage
 
 ```tsx
-import { Container, Box, Stack, Grid, Text } from 'fluid-layout-system';
+import { Container, Box, Stack, Grid, Text } from '@wren/ui';
 
 function App() {
   return (
@@ -267,7 +267,7 @@ React Native-style flex ratios:
 
 ## Philosophy
 
-The Fluid Layout System is built on these principles:
+Wren is built on these principles:
 
 1. **Intrinsic Design**: Let content and context determine layout, not arbitrary breakpoints
 2. **Container Awareness**: Components should respond to their container, not just viewport
@@ -299,7 +299,7 @@ The Fluid Layout System is built on these principles:
 }
 ```
 
-### Fluid Layout System
+### Wren
 
 ```tsx
 <Stack direction="responsive" spacing="fluid-4">
