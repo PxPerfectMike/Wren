@@ -187,31 +187,29 @@ export function PositioningExamples() {
             </Box>
 
             {/* Simulated floating action button (bottom-right) */}
-            <Box
-              position="absolute"
-              bottom={16}
-              right={16}
-              zIndex={1000}
-              background="#8b5cf6"
-              borderRadius="50%"
+            <div
               style={{
+                position: 'absolute',
+                bottom: '16px',
+                right: '16px',
+                zIndex: 1000,
+                width: '56px',
+                height: '56px',
+                borderRadius: '50%',
+                background: '#8b5cf6',
                 color: 'white',
                 cursor: 'pointer',
                 fontWeight: 'bold',
                 fontSize: '2rem',
-                width: '56px',
-                height: '56px',
                 display: 'flex',
-                flexDirection: 'row',
                 alignItems: 'center',
                 justifyContent: 'center',
                 boxShadow: '0 4px 12px rgba(139, 92, 246, 0.4)',
-                lineHeight: 1,
-                padding: 0
+                lineHeight: 1
               }}
             >
               +
-            </Box>
+            </div>
           </Box>
         </Box>
         <Box className="code-block">
