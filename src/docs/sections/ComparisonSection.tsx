@@ -3,14 +3,9 @@ import { Box, Stack, Text, Grid } from '@lib/index';
 export function ComparisonSection() {
   return (
     <Stack direction="column" spacing="fluid-5">
-      <Stack direction="row" justify="space-between" align="center">
-        <Text as="h2" size="text-3xl" weight="bold">
-          Before & After (The Difference is Wild)
-        </Text>
-        <Text size="text-sm" color="var(--color-primary)" style={{ opacity: 0.8 }}>
-          👀 Comparison: built with Wren
-        </Text>
-      </Stack>
+      <Text as="h2" size="text-3xl" weight="bold">
+        Before & After (The Difference is Wild)
+      </Text>
 
       <Text size="text-lg" color="var(--color-text-secondary)">
         Same layout. Traditional CSS vs Wren. You decide which one you'd rather write. 🤷

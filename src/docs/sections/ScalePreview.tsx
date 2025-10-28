@@ -25,14 +25,9 @@ export function ScalePreview() {
 
   return (
     <Stack direction="column" spacing="fluid-5">
-      <Stack direction="row" justify="space-between" align="center">
-        <Text as="h2" size="text-3xl" weight="bold">
-          Fluid Scales (The Secret Sauce)
-        </Text>
-        <Text size="text-sm" color="var(--color-primary)" style={{ opacity: 0.8 }}>
-          👀 This demo: built with Wren
-        </Text>
-      </Stack>
+      <Text as="h2" size="text-3xl" weight="bold">
+        Fluid Scales (The Secret Sauce)
+      </Text>
 
       <Text size="text-lg" color="var(--color-text-secondary)">
         Spacing that scales smoothly. No jumps, no breakpoints. Just <code>clamp()</code> doing its thing.

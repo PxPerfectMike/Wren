@@ -16,25 +16,17 @@ function App() {
         style={{ color: 'white' }}
       >
         <Container maxWidth="xl" center>
-          <Stack direction="column" align="center" spacing="fluid-3">
-            <Stack direction="row" align="center" justify="center" spacing="fluid-4">
-              <img src="/logo.svg" alt="Wren Logo" style={{ width: '64px', height: '64px' }} />
-              <Text as="h1" size="text-5xl" weight="bold" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-                Wren
-              </Text>
-            </Stack>
-            <Box
-              padding="scale-2"
-              paddingX="scale-4"
-              background="rgba(255,255,255,0.2)"
-              borderRadius="20px"
-              style={{ fontSize: '0.85rem', fontWeight: 600, backdropFilter: 'blur(10px)' }}
-            >
-              ✨ Built with Wren
-            </Box>
+          <Stack direction="row" align="center" justify="center" spacing="fluid-4" marginBottom="scale-2">
+            <img src="/logo.svg" alt="Wren Logo" style={{ width: '64px', height: '64px' }} />
+            <Text as="h1" size="text-5xl" weight="bold" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+              Wren
+            </Text>
           </Stack>
-          <Text size="text-xl" style={{ opacity: 0.9 }} align="center" marginTop="scale-4">
+          <Text size="text-xl" style={{ opacity: 0.9 }} align="center">
             React components with container queries and fluid scales. No breakpoints.
+          </Text>
+          <Text size="text-sm" style={{ opacity: 0.7 }} align="center" marginTop="scale-2">
+            (Yes, this entire site is built with Wren)
           </Text>
         </Container>
       </Box>
@@ -62,7 +54,7 @@ function App() {
                 Built <em>entirely</em> with Wren. No custom CSS breakpoints. No media queries. Just components.
               </Text>
               <Stack direction="column" spacing="fluid-2">
-                <Text weight="semibold">The whole site uses:</Text>
+                <Text weight="semibold">This site uses:</Text>
                 <Stack as="ul" direction="column" spacing="fluid-2" style={{ margin: 0, paddingLeft: '1.5rem' }}>
                   <Text as="li"><code>Container</code> for responsive contexts</Text>
                   <Text as="li"><code>Stack</code> and <code>Grid</code> for all layouts</Text>
@@ -72,7 +64,7 @@ function App() {
                 </Stack>
               </Stack>
               <Text size="text-sm" color="var(--color-text-secondary)" style={{ fontStyle: 'italic' }}>
-                We're not just showing you what Wren can do—we're proving it works.
+                I'm not just showing you what Wren can do—I'm proving it works.
               </Text>
             </Stack>
           </Box>

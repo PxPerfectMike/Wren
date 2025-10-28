@@ -3,14 +3,9 @@ import { Box, Stack, Text } from '@lib/index';
 export function StackExamples() {
   return (
     <Stack direction="column" spacing="fluid-5">
-      <Stack direction="row" justify="space-between" align="center">
-        <Text as="h2" size="text-3xl" weight="bold">
-          Stack Component
-        </Text>
-        <Text size="text-sm" color="var(--color-primary)" style={{ opacity: 0.8 }}>
-          👀 Examples: built with Wren
-        </Text>
-      </Stack>
+      <Text as="h2" size="text-3xl" weight="bold">
+        Stack Component
+      </Text>
 
       <Text size="text-lg" color="var(--color-text-secondary)">
         Auto-layout magic. Items just line up how you expect them to. No flexbox headaches.

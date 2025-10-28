@@ -3,14 +3,9 @@ import { Box, Stack, Text, Grid } from '@lib/index';
 export function GridExamples() {
   return (
     <Stack direction="column" spacing="fluid-5">
-      <Stack direction="row" justify="space-between" align="center">
-        <Text as="h2" size="text-3xl" weight="bold">
-          Grid Component
-        </Text>
-        <Text size="text-sm" color="var(--color-primary)" style={{ opacity: 0.8 }}>
-          👀 Examples: built with Wren
-        </Text>
-      </Stack>
+      <Text as="h2" size="text-3xl" weight="bold">
+        Grid Component
+      </Text>
 
       <Text size="text-lg" color="var(--color-text-secondary)">
         Grids that actually work. No breakpoints. Items wrap when they need to. It's kind of magical. ✨
