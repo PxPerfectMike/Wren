@@ -85,9 +85,21 @@ export interface FlexProps {
 }
 
 /**
+ * Positioning props
+ */
+export interface PositionProps {
+  position?: 'relative' | 'absolute' | 'fixed' | 'sticky' | 'static';
+  top?: string | number;
+  right?: string | number;
+  bottom?: string | number;
+  left?: string | number;
+  zIndex?: number;
+}
+
+/**
  * Layout configuration
  */
-export interface LayoutProps extends FlexProps {
+export interface LayoutProps extends FlexProps, PositionProps {
   width?: string | number;
   height?: string | number;
   minWidth?: string | number;

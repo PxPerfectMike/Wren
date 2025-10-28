@@ -7,10 +7,17 @@ import '../styles/foundation.css';
 export interface StackProps extends BaseLayoutProps, SpacingProps {
   /**
    * Direction of the stack (row, column, or responsive)
-   * 'responsive' switches from column to row at md breakpoint (768px container width)
+   * 'responsive' switches from column to row based on container width
    * @default 'column'
    */
   direction?: ResponsiveDirection;
+
+  /**
+   * Container width breakpoint for responsive direction (in pixels)
+   * Only applies when direction="responsive"
+   * @default 768
+   */
+  responsiveBreakpoint?: number;
 
   /**
    * Spacing between items (uses fluid or fixed scale)
@@ -65,6 +72,7 @@ export const Stack = forwardRef<HTMLDivElement, StackProps>(
     style,
     as: Component = 'div',
     direction = 'column',
+    responsiveBreakpoint = 768,
     spacing = 'fluid-4',
     align,
     justify,
@@ -91,6 +99,7 @@ export const Stack = forwardRef<HTMLDivElement, StackProps>(
     const combinedStyles = {
       ...spacingStyles,
       '--stack-gap': resolvedSpacing,
+      '--stack-responsive-breakpoint': `${responsiveBreakpoint}px`,
       alignItems,
       justifyContent,
       flexWrap: wrap ? 'wrap' : undefined,

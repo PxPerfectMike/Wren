@@ -104,6 +104,26 @@ export function generateLayoutStyles(props: LayoutProps): CSSProperties {
     styles.maxHeight = typeof props.maxHeight === 'number' ? `${props.maxHeight}px` : props.maxHeight;
   }
 
+  // Positioning properties
+  if (props.position) {
+    styles.position = props.position;
+  }
+  if (props.top !== undefined) {
+    styles.top = typeof props.top === 'number' ? `${props.top}px` : props.top;
+  }
+  if (props.right !== undefined) {
+    styles.right = typeof props.right === 'number' ? `${props.right}px` : props.right;
+  }
+  if (props.bottom !== undefined) {
+    styles.bottom = typeof props.bottom === 'number' ? `${props.bottom}px` : props.bottom;
+  }
+  if (props.left !== undefined) {
+    styles.left = typeof props.left === 'number' ? `${props.left}px` : props.left;
+  }
+  if (props.zIndex !== undefined) {
+    styles.zIndex = props.zIndex;
+  }
+
   // Include flex props
   Object.assign(styles, generateFlexStyles(props));
 

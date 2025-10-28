@@ -3,59 +3,79 @@
  *
  * Generates fluid spacing and typography scales using CSS clamp()
  * Values scale smoothly between min and max viewport/container sizes
+ *
+ * Supports both viewport-based (vw) and container-based (cqi) scaling
  */
 
 export interface ScaleConfig {
   min: number;        // Minimum size in rem
   max: number;        // Maximum size in rem
-  minVw?: number;     // Viewport width where min applies (default: 320px)
-  maxVw?: number;     // Viewport width where max applies (default: 1920px)
+  minSize?: number;   // Container/viewport size where min applies (default: 320px)
+  maxSize?: number;   // Container/viewport size where max applies (default: 1920px)
 }
+
+export type ScaleUnit = 'vw' | 'cqi';
 
 /**
  * Generates a CSS clamp() expression for fluid scaling
- * Formula: clamp(MIN, MIN + (MAX - MIN) * ((100vw - MINvw) / (MAXvw - MINvw)), MAX)
- * Simplified: clamp(MIN, VW_CALCULATION, MAX)
+ * Formula: clamp(MIN, MIN + (MAX - MIN) * ((100unit - MINsize) / (MAXsize - MINsize)), MAX)
+ *
+ * @param config - Scale configuration
+ * @param unit - 'vw' for viewport-based or 'cqi' for container-based scaling
  */
-export function createFluidScale(config: ScaleConfig): string {
+export function createFluidScale(config: ScaleConfig, unit: ScaleUnit = 'vw'): string {
   const {
     min,
     max,
-    minVw = 320,  // 20rem
-    maxVw = 1920, // 120rem
+    minSize = 320,  // 20rem
+    maxSize = 1920, // 120rem
   } = config;
 
-  // Convert viewport widths to rem (assuming 16px base)
-  const minVwRem = minVw / 16;
-  const maxVwRem = maxVw / 16;
+  // Convert sizes to rem (assuming 16px base)
+  const minSizeRem = minSize / 16;
+  const maxSizeRem = maxSize / 16;
 
   // Calculate the fluid middle value
-  const slope = (max - min) / (maxVwRem - minVwRem);
-  const intercept = min - slope * minVwRem;
+  const slope = (max - min) / (maxSizeRem - minSizeRem);
+  const intercept = min - slope * minSizeRem;
 
-  // Create the clamp expression
-  // clamp(min, intercept + slope * 100vw, max)
-  const fluidValue = `${intercept.toFixed(4)}rem + ${(slope * 100).toFixed(4)}vw`;
+  // Create the clamp expression with appropriate unit
+  // clamp(min, intercept + slope * 100unit, max)
+  const fluidValue = `${intercept.toFixed(4)}rem + ${(slope * 100).toFixed(4)}${unit}`;
 
   return `clamp(${min}rem, ${fluidValue}, ${max}rem)`;
 }
 
-/**
- * Predefined fluid spacing scale (1-10)
- * Small, subtle scales for tight layouts to large, spacious scales
- */
-export const fluidSpacingScales: Record<string, string> = {
-  'fluid-1': createFluidScale({ min: 0.25, max: 0.5 }),   // 4px - 8px
-  'fluid-2': createFluidScale({ min: 0.5, max: 0.75 }),   // 8px - 12px
-  'fluid-3': createFluidScale({ min: 0.75, max: 1 }),     // 12px - 16px
-  'fluid-4': createFluidScale({ min: 1, max: 1.5 }),      // 16px - 24px
-  'fluid-5': createFluidScale({ min: 1.5, max: 2 }),      // 24px - 32px
-  'fluid-6': createFluidScale({ min: 2, max: 3 }),        // 32px - 48px
-  'fluid-7': createFluidScale({ min: 3, max: 4 }),        // 48px - 64px
-  'fluid-8': createFluidScale({ min: 4, max: 6 }),        // 64px - 96px
-  'fluid-9': createFluidScale({ min: 6, max: 8 }),        // 96px - 128px
-  'fluid-10': createFluidScale({ min: 8, max: 12 }),      // 128px - 192px
+// Scale configurations (shared between viewport and container scales)
+const spacingConfigs: Record<string, ScaleConfig> = {
+  'fluid-1': { min: 0.25, max: 0.5 },   // 4px - 8px
+  'fluid-2': { min: 0.5, max: 0.75 },   // 8px - 12px
+  'fluid-3': { min: 0.75, max: 1 },     // 12px - 16px
+  'fluid-4': { min: 1, max: 1.5 },      // 16px - 24px
+  'fluid-5': { min: 1.5, max: 2 },      // 24px - 32px
+  'fluid-6': { min: 2, max: 3 },        // 32px - 48px
+  'fluid-7': { min: 3, max: 4 },        // 48px - 64px
+  'fluid-8': { min: 4, max: 6 },        // 64px - 96px
+  'fluid-9': { min: 6, max: 8 },        // 96px - 128px
+  'fluid-10': { min: 8, max: 12 },      // 128px - 192px
 };
+
+/**
+ * Viewport-based fluid spacing scales
+ * Scales based on viewport width (vw units)
+ */
+export const fluidSpacingScales: Record<string, string> = Object.fromEntries(
+  Object.entries(spacingConfigs).map(([key, config]) => [key, createFluidScale(config, 'vw')])
+);
+
+/**
+ * Container-based fluid spacing scales
+ * Scales based on container inline size (cqi units)
+ * Requires ancestor with container-type: inline-size
+ */
+export const containerSpacingScales: Record<string, string> = Object.fromEntries(
+  Object.entries(spacingConfigs).map(([key, config]) => [key, createFluidScale(config, 'cqi')])
+);
 
 /**
  * Fixed spacing scale (1-10)
@@ -74,21 +94,35 @@ export const fixedSpacingScales: Record<string, string> = {
   'scale-10': '8rem',    // 128px
 };
 
-/**
- * Fluid typography scale
- * Responsive text sizes using clamp()
- */
-export const typographyScales: Record<string, string> = {
-  'text-xs': createFluidScale({ min: 0.75, max: 0.875 }),   // 12px - 14px
-  'text-sm': createFluidScale({ min: 0.875, max: 1 }),      // 14px - 16px
-  'text-base': createFluidScale({ min: 1, max: 1.125 }),    // 16px - 18px
-  'text-lg': createFluidScale({ min: 1.125, max: 1.25 }),   // 18px - 20px
-  'text-xl': createFluidScale({ min: 1.25, max: 1.5 }),     // 20px - 24px
-  'text-2xl': createFluidScale({ min: 1.5, max: 2 }),       // 24px - 32px
-  'text-3xl': createFluidScale({ min: 2, max: 2.5 }),       // 32px - 40px
-  'text-4xl': createFluidScale({ min: 2.5, max: 3.5 }),     // 40px - 56px
-  'text-5xl': createFluidScale({ min: 3.5, max: 5 }),       // 56px - 80px
+// Typography scale configurations
+const typographyConfigs: Record<string, ScaleConfig> = {
+  'text-xs': { min: 0.75, max: 0.875 },   // 12px - 14px
+  'text-sm': { min: 0.875, max: 1 },      // 14px - 16px
+  'text-base': { min: 1, max: 1.125 },    // 16px - 18px
+  'text-lg': { min: 1.125, max: 1.25 },   // 18px - 20px
+  'text-xl': { min: 1.25, max: 1.5 },     // 20px - 24px
+  'text-2xl': { min: 1.5, max: 2 },       // 24px - 32px
+  'text-3xl': { min: 2, max: 2.5 },       // 32px - 40px
+  'text-4xl': { min: 2.5, max: 3.5 },     // 40px - 56px
+  'text-5xl': { min: 3.5, max: 5 },       // 56px - 80px
 };
+
+/**
+ * Viewport-based fluid typography scale
+ * Responsive text sizes using viewport units (vw)
+ */
+export const typographyScales: Record<string, string> = Object.fromEntries(
+  Object.entries(typographyConfigs).map(([key, config]) => [key, createFluidScale(config, 'vw')])
+);
+
+/**
+ * Container-based fluid typography scale
+ * Responsive text sizes using container query units (cqi)
+ * Requires ancestor with container-type: inline-size
+ */
+export const containerTypographyScales: Record<string, string> = Object.fromEntries(
+  Object.entries(typographyConfigs).map(([key, config]) => [key, createFluidScale(config, 'cqi')])
+);
 
 /**
  * Resolves a spacing value to a CSS value
