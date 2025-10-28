@@ -109,7 +109,13 @@ export function PositioningExamples() {
             padding="fluid-4"
             background="linear-gradient(135deg, #667eea 0%, #764ba2 100%)"
             zIndex={10}
-            style={{ color: 'white', fontWeight: 'bold' }}
+            style={{
+              color: 'white',
+              fontWeight: 'bold',
+              display: 'flex',
+              alignItems: 'center',
+              boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)'
+            }}
           >
             Sticky Header (scroll to see it stick!)
           </Box>
