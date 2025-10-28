@@ -25,10 +25,8 @@ export function PositioningExamples() {
             position="relative"
             className="demo-section"
             padding="fluid-6"
-            style={{ minHeight: '200px' }}
+            style={{ minHeight: '250px', display: 'flex', alignItems: 'flex-start', justifyContent: 'flex-start' }}
           >
-            <Text>Relative Container</Text>
-
             {/* Top-right badge */}
             <Box
               position="absolute"
