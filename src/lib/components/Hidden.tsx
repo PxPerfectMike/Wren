@@ -72,19 +72,49 @@ export interface HiddenProps {
  */
 export const Hidden = forwardRef<HTMLDivElement, HiddenProps>(
   ({ children, below, above, removeFromDOM = true, className, style }, ref) => {
-    const customStyle: React.CSSProperties = {
-      ...style,
-      ...(below && { '--wren-hide-below': `${below}px` } as any),
-      ...(above && { '--wren-hide-above': `${above}px` } as any),
-    };
-
     const hideMethod = removeFromDOM ? 'display' : 'visibility';
-    const classes = `wren-hidden wren-hidden-${hideMethod}${below ? ' wren-hide-below' : ''}${above ? ' wren-hide-above' : ''}${className ? ` ${className}` : ''}`;
+    const hideProperty = removeFromDOM ? 'display: none' : 'visibility: hidden';
+    const showProperty = removeFromDOM ? 'display: block' : 'visibility: visible';
+
+    // Generate unique ID for this instance
+    const instanceId = `wren-hidden-${Math.random().toString(36).substr(2, 9)}`;
+
+    // Generate container query CSS for this specific instance
+    let containerQueryCSS = '';
+
+    if (below !== undefined && above !== undefined) {
+      // Range: hide outside the range, show inside
+      containerQueryCSS = `
+        .${instanceId} { ${hideProperty}; }
+        @container (min-width: ${below}px) and (max-width: ${above}px) {
+          .${instanceId} { ${showProperty}; }
+        }
+      `;
+    } else if (below !== undefined) {
+      // Hide when container is below this width
+      containerQueryCSS = `
+        @container (max-width: ${below - 1}px) {
+          .${instanceId} { ${hideProperty}; }
+        }
+      `;
+    } else if (above !== undefined) {
+      // Hide when container is above this width
+      containerQueryCSS = `
+        @container (min-width: ${above + 1}px) {
+          .${instanceId} { ${hideProperty}; }
+        }
+      `;
+    }
+
+    const classes = `${instanceId}${className ? ` ${className}` : ''}`;
 
     return (
-      <div ref={ref} className={classes} style={customStyle} aria-hidden={removeFromDOM ? 'true' : undefined}>
-        {children}
-      </div>
+      <>
+        {containerQueryCSS && <style>{containerQueryCSS}</style>}
+        <div ref={ref} className={classes} style={style} aria-hidden={removeFromDOM ? 'true' : undefined}>
+          {children}
+        </div>
+      </>
     );
   }
 );

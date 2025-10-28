@@ -140,3 +140,23 @@ a:hover {
   min-width: 0;
   overflow-x: auto;
 }
+
+/* Viewport-based visibility utilities */
+/* These use @media queries (viewport) not @container queries */
+.viewport-hide-below-600 {
+  display: none;
+}
+
+.viewport-hide-above-600 {
+  display: block;
+}
+
+@media (min-width: 601px) {
+  .viewport-hide-below-600 {
+    display: block;
+  }
+
+  .viewport-hide-above-600 {
+    display: none;
+  }
+}

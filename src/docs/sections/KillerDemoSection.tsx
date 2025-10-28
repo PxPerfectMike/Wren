@@ -169,57 +169,53 @@ export function KillerDemoSection() {
           Traditional CSS would require viewport queries that apply globally - impossible to have different layouts at the same viewport size.
         </Text>
 
-        {/* Show message on narrow viewports */}
-        <Hidden above={600}>
-          <Box
-            className="demo-card"
-            padding="fluid-5"
-            style={{
-              background: '#fef3c7',
-              borderLeft: '4px solid #f59e0b',
-              textAlign: 'center'
-            }}
-          >
-            <Stack direction="column" spacing="fluid-2" align="center">
-              <Text size="text-lg" weight="semibold" style={{ color: '#92400e' }}>
-                📱 View on a wider screen
-              </Text>
-              <Text style={{ color: '#78350f' }}>
-                This demo shows side-by-side layouts and is best viewed on screens 600px+ wide.
-                Try viewing on desktop or tablet to see the full effect!
-              </Text>
-            </Stack>
-          </Box>
-        </Hidden>
+        {/* Show message on narrow viewports (below 600px) */}
+        <Box
+          className="demo-card viewport-hide-above-600"
+          padding="fluid-5"
+          style={{
+            background: '#fef3c7',
+            borderLeft: '4px solid #f59e0b',
+            textAlign: 'center'
+          }}
+        >
+          <Stack direction="column" spacing="fluid-2" align="center">
+            <Text size="text-lg" weight="semibold" style={{ color: '#92400e' }}>
+              📱 View on a wider screen
+            </Text>
+            <Text style={{ color: '#78350f' }}>
+              This demo shows side-by-side layouts and is best viewed on screens 600px+ wide.
+              Try viewing on desktop or tablet to see the full effect!
+            </Text>
+          </Stack>
+        </Box>
 
-        {/* Show demo on wider viewports */}
-        <Hidden below={600}>
-          <Container>
-            <Stack direction="row" spacing="fluid-4" align="stretch">
-              {/* Narrow sidebar */}
-              <Box flex={1} style={{ minWidth: '200px' }}>
-                <Stack direction="column" spacing="fluid-3">
-                  <Text weight="semibold" size="text-sm" style={{ textTransform: 'uppercase', color: 'var(--color-text-secondary)' }}>
-                    Sidebar (1/4 width)
-                  </Text>
-                  <AdaptiveCard />
-                  <AdaptiveCard />
-                </Stack>
-              </Box>
+        {/* Show demo on wider viewports (above 600px) */}
+        <Container className="viewport-hide-below-600">
+          <Stack direction="row" spacing="fluid-4" align="stretch">
+            {/* Narrow sidebar */}
+            <Box flex={1} style={{ minWidth: '200px' }}>
+              <Stack direction="column" spacing="fluid-3">
+                <Text weight="semibold" size="text-sm" style={{ textTransform: 'uppercase', color: 'var(--color-text-secondary)' }}>
+                  Sidebar (1/4 width)
+                </Text>
+                <AdaptiveCard />
+                <AdaptiveCard />
+              </Stack>
+            </Box>
 
-              {/* Wide main area */}
-              <Box flex={3}>
-                <Stack direction="column" spacing="fluid-3">
-                  <Text weight="semibold" size="text-sm" style={{ textTransform: 'uppercase', color: 'var(--color-text-secondary)' }}>
-                    Main Content (3/4 width)
-                  </Text>
-                  <AdaptiveCard />
-                  <AdaptiveCard />
-                </Stack>
-              </Box>
-            </Stack>
-          </Container>
-        </Hidden>
+            {/* Wide main area */}
+            <Box flex={3}>
+              <Stack direction="column" spacing="fluid-3">
+                <Text weight="semibold" size="text-sm" style={{ textTransform: 'uppercase', color: 'var(--color-text-secondary)' }}>
+                  Main Content (3/4 width)
+                </Text>
+                <AdaptiveCard />
+                <AdaptiveCard />
+              </Stack>
+            </Box>
+          </Stack>
+        </Container>
         <Box className="code-block">
           <pre style={{ fontSize: '0.8rem' }}><code>{`<Stack direction="responsive" spacing="fluid-4">
   <Box flex={1}>
