@@ -79,9 +79,15 @@ function App() {
         style={{ borderTop: '1px solid var(--color-border)' }}
       >
         <Container maxWidth="xl" center>
-          <Text align="center" color="var(--color-text-secondary)">
-            Made with Wren 🐦 • No breakpoints were harmed in the making of this site
-          </Text>
+          <Stack direction="row" align="center" justify="center" spacing="scale-2">
+            <Text align="center" color="var(--color-text-secondary)">
+              Made with Wren
+            </Text>
+            <img src="/logo.svg" alt="Wren Logo" style={{ width: '20px', height: '20px' }} />
+            <Text align="center" color="var(--color-text-secondary)">
+              • No breakpoints were harmed in the making of this site
+            </Text>
+          </Stack>
         </Container>
       </Box>
     </Box>
