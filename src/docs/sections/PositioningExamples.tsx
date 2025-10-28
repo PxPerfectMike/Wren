@@ -201,14 +201,14 @@ export function PositioningExamples() {
                 cursor: 'pointer',
                 fontWeight: 'bold',
                 fontSize: '2rem',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
+                display: 'grid',
+                placeItems: 'center',
                 boxShadow: '0 4px 12px rgba(139, 92, 246, 0.4)',
-                lineHeight: 1
+                lineHeight: 1,
+                fontFamily: 'system-ui, -apple-system, sans-serif'
               }}
             >
-              +
+              <span style={{ marginTop: '-2px' }}>+</span>
             </div>
           </Box>
         </Box>
