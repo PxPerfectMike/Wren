@@ -198,13 +198,16 @@ export function PositioningExamples() {
                 color: 'white',
                 cursor: 'pointer',
                 fontWeight: 'bold',
-                fontSize: '1.5rem',
+                fontSize: '2rem',
                 width: '56px',
                 height: '56px',
                 display: 'flex',
+                flexDirection: 'row',
                 alignItems: 'center',
                 justifyContent: 'center',
-                boxShadow: '0 4px 12px rgba(139, 92, 246, 0.4)'
+                boxShadow: '0 4px 12px rgba(139, 92, 246, 0.4)',
+                lineHeight: 1,
+                padding: 0
               }}
             >
               +
