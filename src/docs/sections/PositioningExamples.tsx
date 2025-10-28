@@ -154,11 +154,11 @@ export function PositioningExamples() {
           (Demo uses absolute positioning to simulate fixed behavior within the container)
         </Text>
         <Box className="example-container">
-          <Box position="relative" padding="fluid-5" style={{ minHeight: '300px', overflow: 'hidden' }}>
+          <Box position="relative" style={{ minHeight: '280px', overflow: 'hidden', background: '#f9fafb' }}>
             {/* Simulated notification banner (top-center) */}
             <Box
               position="absolute"
-              top={10}
+              top={16}
               left="50%"
               zIndex={9999}
               padding="scale-3"
@@ -168,28 +168,30 @@ export function PositioningExamples() {
                 transform: 'translateX(-50%)',
                 boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)',
                 fontWeight: 'semibold',
-                fontSize: '0.875rem'
+                fontSize: '0.875rem',
+                whiteSpace: 'nowrap'
               }}
             >
-              🔔 Notification (top-center, z-index: 9999)
+              🔔 Notification (z-index: 9999)
             </Box>
 
-            {/* Content area */}
-            <Box marginTop="scale-8" marginBottom="scale-4" className="demo-section" padding="fluid-4">
-              <Text weight="semibold" marginBottom="scale-2">Scrollable Content</Text>
-              <Text size="text-sm">
-                In a real app, fixed elements stay in the same position even when the page scrolls.
-                Great for notifications, FABs, and navigation.
-              </Text>
+            {/* Content area with enough top padding */}
+            <Box padding="fluid-5" paddingTop="scale-10" style={{ minHeight: '200px' }}>
+              <Box className="demo-section" padding="fluid-4">
+                <Text weight="semibold" marginBottom="scale-2">Content Area</Text>
+                <Text size="text-sm" color="var(--color-text-secondary)">
+                  In a real app with position="fixed", elements stay in the same position even when scrolling.
+                  Perfect for notifications, FABs, and persistent navigation.
+                </Text>
+              </Box>
             </Box>
 
             {/* Simulated floating action button (bottom-right) */}
             <Box
               position="absolute"
-              bottom={20}
-              right={20}
+              bottom={16}
+              right={16}
               zIndex={1000}
-              padding="scale-4"
               background="#8b5cf6"
               borderRadius="50%"
               style={{
