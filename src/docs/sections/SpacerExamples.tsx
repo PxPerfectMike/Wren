@@ -82,15 +82,15 @@ export function SpacerExamples() {
         </Text>
         <Box className="example-container">
           <Stack direction="row" spacing="fluid-3" align="center" style={{ minHeight: '80px' }}>
-            <Box className="demo-section" padding="fluid-3">
+            <Box className="demo-section" padding="fluid-3" style={{ minWidth: '80px', textAlign: 'center' }}>
               Left
             </Box>
             <Spacer />
-            <Box className="demo-section" padding="fluid-3">
+            <Box className="demo-section" padding="fluid-3" style={{ minWidth: '80px', textAlign: 'center' }}>
               Center
             </Box>
             <Spacer />
-            <Box className="demo-section" padding="fluid-3">
+            <Box className="demo-section" padding="fluid-3" style={{ minWidth: '80px', textAlign: 'center' }}>
               Right
             </Box>
           </Stack>
