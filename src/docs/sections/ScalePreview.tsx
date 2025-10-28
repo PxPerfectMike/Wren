@@ -42,7 +42,7 @@ export function ScalePreview() {
         <Grid columns="auto-fit" minSize="200px" gap="fluid-3">
           {fluidScales.map((scale) => (
             <Box key={scale.name} className="demo-card">
-              <Stack direction="column" spacing="fluid-2">
+              <Stack direction="column" spacing="fluid-2" align="start">
                 <code>{scale.name}</code>
                 <Text size="text-sm" color="var(--color-text-secondary)">
                   {scale.desc}
@@ -50,10 +50,10 @@ export function ScalePreview() {
                 <Box
                   background="var(--color-primary)"
                   style={{
-                    height: '8px',
+                    height: '24px',
                     width: `var(--${scale.name})`,
                     borderRadius: '4px',
-                    minWidth: '100%',
+                    transition: 'width 0.3s ease',
                   }}
                 />
               </Stack>
